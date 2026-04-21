@@ -1,48 +1,25 @@
-// Main JS for Arockia Hospital Website
+// Arockia Medical Centre & Hospital
 
-// Smooth Scrolling
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Animation on Scroll (Basic Observer)
-const observerOptions = {
-    threshold: 0.1
-};
-
+// Scroll-triggered fade-in
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.classList.add('visible');
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.12 });
 
-document.querySelectorAll('.service-card, .contact-info, .contact-form, .hero-content, .hero-image').forEach(el => {
-    observer.observe(el);
-});
-
-// Hero Slider Logic
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-
-function nextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
-if (slides.length > 0) {
-    setInterval(nextSlide, 5000); // Change slide every 5 seconds
-}
-
-console.log('Arockia Hospital Website Initialized');
+document.querySelectorAll(
+    '.speciality-card, .dept-card, .facility-card, .affordable-card, ' +
+    '.emergency-card, .elderly-feature, .why-card, .info-item'
+).forEach(el => observer.observe(el));
