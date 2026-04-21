@@ -1080,32 +1080,38 @@ footer { background: #0a1929; color: rgba(255,255,255,0.75); }
   .mobile-menu-btn { display: flex; margin-left: auto; }
   .nav-btn { display: none; }
   header { position: fixed; top: 0; }
-  .hero { margin-top: var(--header-h); height: 85vh; }
-  .hero-content h1 { font-size: 36px; }
-  .hero-actions { flex-direction: column; }
-  .btn-emergency-hero { width: fit-content; }
+  .hero { margin-top: var(--header-h); height: 80vh; min-height: 500px; }
+  .hero-content h1 { font-size: clamp(32px, 8vw, 40px); }
+  .hero-content p { font-size: 15px; margin-bottom: 24px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .btn { width: 100%; justify-content: center; }
+  .btn-emergency-hero { width: 100%; }
   .stat-divider { display: none; }
   .stats-grid { gap: 0; }
-  .stat-item { flex: 1 1 50%; border-bottom: 1px solid var(--border); }
-  .emergency-grid { grid-template-columns: 1fr; }
-  .specialities-grid { grid-template-columns: 1fr; }
-  .departments-grid { grid-template-columns: repeat(2,1fr); }
-  .elderly-inner { grid-template-columns: 1fr; }
+  .stat-item { flex: 1 1 50%; border-bottom: 1px solid var(--border); padding: 20px 10px; }
+  .stat-item h2 { font-size: 24px; }
+  .emergency-grid { grid-template-columns: 1fr; gap: 12px; }
+  .specialities-grid { grid-template-columns: 1fr; gap: 16px; }
+  .departments-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .elderly-inner { grid-template-columns: 1fr; gap: 32px; }
   .elderly-features { grid-template-columns: 1fr; }
   .about-cards { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 10px; }
   .gallery-item--wide { grid-column: span 2; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .affordable-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .why-grid { grid-template-columns: 1fr; gap: 12px; }
+  .affordable-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  .section-title { margin-bottom: 40px; }
+  .section-title h2 { font-size: 28px; }
+  section { padding: 50px 0; }
 }
 
 @media (max-width: 480px) {
-  section { padding: 60px 0; }
+  .hero-content h1 { font-size: 32px; }
   .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
   .gallery-item--wide { grid-column: span 1; }
-  .departments-grid { grid-template-columns: repeat(2,1fr); }
-  .contact-form-wrap { padding: 24px 18px; }
+  .stat-item { flex: 1 1 100%; }
 }
