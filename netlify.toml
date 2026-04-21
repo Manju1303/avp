@@ -2,7 +2,7 @@
 # Static site — no build step required
 
 [build]
-  publish = "."
+  publish = "public"
 
 # Security & caching headers
 [[headers]]
