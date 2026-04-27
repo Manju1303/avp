@@ -291,6 +291,28 @@ nav {
 }
 .slider-dot.active { background: #fff; width: 24px; border-radius: 4px; }
 
+/* Slide Captions */
+.slide-caption {
+  position: absolute;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  z-index: 10;
+  letter-spacing: 0.3px;
+}
+.slide-caption i { width: 14px; height: 14px; }
+
 .hero-content-wrap {
   position: absolute;
   inset: 0;
@@ -1242,3 +1264,25 @@ footer { background: #0a1929; color: rgba(255,255,255,0.75); }
 }
 .author-info strong { display: block; font-size: 16px; color: var(--text); }
 .author-info span { font-size: 13px; color: var(--text-muted); }
+
+/* Testimonial Stars & Avatar */
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.testimonial-stars i {
+  width: 16px; height: 16px;
+  color: #f59e0b;
+  fill: #f59e0b;
+}
+.author-avatar {
+  width: 44px; height: 44px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.author-avatar i { width: 24px; height: 24px; color: var(--primary); }
