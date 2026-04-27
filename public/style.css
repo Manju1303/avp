@@ -553,6 +553,7 @@ nav {
 .speciality-icon.emergency{ background: linear-gradient(135deg,#ef4444,#b91c1c); }
 .speciality-icon.pediatrics{ background: linear-gradient(135deg,#f59e0b,#d97706); }
 .speciality-icon.skincare{ background: linear-gradient(135deg,#06b6d4,#0891b2); }
+.speciality-icon.urology{ background: linear-gradient(135deg,#6366f1,#4338ca); }
 
 .speciality-header h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
 .spec-tag {
