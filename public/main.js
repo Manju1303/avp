@@ -58,3 +58,32 @@ waBtn.target = '_blank';
 waBtn.innerHTML = '<i data-lucide="message-circle"></i><span>Chat with Us</span>';
 document.body.appendChild(waBtn);
 
+// Form Submission Handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button');
+        const originalText = btn.innerHTML;
+        
+        btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
+        btn.disabled = true;
+        
+        // Simulate sending
+        setTimeout(() => {
+            alert('Thank you! Your appointment request has been sent successfully. We will contact you shortly.');
+            contactForm.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            lucide.createIcons(); // Re-render icons in button
+        }, 1500);
+    });
+}
+
+// Mobile Menu Auto-close
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
