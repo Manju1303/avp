@@ -657,6 +657,9 @@ nav {
 }
 .facility-pill i { width: 16px; height: 16px; color: var(--primary); }
 .facility-pill:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+.facility-pill.highlight { background: var(--primary); color: #fff; border-color: var(--primary-dark); box-shadow: 0 4px 12px rgba(0,94,166,0.3); }
+.facility-pill.highlight i { color: #fff; }
+.facility-pill.highlight:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
 /* ──────────────────────────────────────────
    HOME & ELDERLY CARE
@@ -1161,3 +1164,81 @@ footer { background: #0a1929; color: rgba(255,255,255,0.75); }
   .gallery-item--wide { grid-column: span 1; }
   .stat-item { flex: 1 1 100%; }
 }
+
+/* ──────────────────────────────────────────
+   TECHNOLOGY SECTION
+────────────────────────────────────────── */
+.technology-section { background: var(--bg-white); border-top: 1px solid var(--border); }
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+.tech-item {
+  background: var(--bg);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+.tech-item:hover {
+  background: #fff;
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+.tech-icon {
+  width: 64px; height: 64px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+.tech-icon i { width: 28px; height: 28px; }
+.tech-item h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.tech-item p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+/* ──────────────────────────────────────────
+   TESTIMONIALS SECTION
+────────────────────────────────────────── */
+.testimonials-section { background: var(--primary-light); }
+.testimonials-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+.testimonial-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.quote-icon {
+  position: absolute;
+  top: 24px; right: 24px;
+  color: var(--primary-light);
+  width: 48px; height: 48px;
+  opacity: 0.5;
+}
+.testimonial-content p {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.author-info strong { display: block; font-size: 16px; color: var(--text); }
+.author-info span { font-size: 13px; color: var(--text-muted); }
