@@ -1293,3 +1293,65 @@ footer { background: #0a1929; color: rgba(255,255,255,0.75); }
   flex-shrink: 0;
 }
 .author-avatar i { width: 24px; height: 24px; color: var(--primary); }
+/* ──────────────────────────────────────────
+   PREMIUM ENHANCEMENTS
+────────────────────────────────────────── */
+.speciality-card, .dept-card, .facility-card, .affordable-card, 
+.emergency-card, .elderly-feature, .why-card, .info-item, .tech-item, .testimonial-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.speciality-card.visible, .dept-card.visible, .facility-card.visible, .affordable-card.visible, 
+.emergency-card.visible, .elderly-feature.visible, .why-card.visible, .info-item.visible, .tech-item.visible, .testimonial-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px; height: 50px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: var(--transition);
+  z-index: 999;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: scale(1); }
+.back-to-top:hover { background: var(--secondary); transform: scale(1.1); }
+.back-to-top i { width: 24px; height: 24px; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: #25d366;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 999;
+  transition: var(--transition);
+}
+.whatsapp-float:hover { background: #128c7e; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.whatsapp-float i { width: 20px; height: 20px; }
+
+@media (max-width: 768px) {
+  .whatsapp-float span { display: none; }
+  .whatsapp-float { padding: 12px; border-radius: 50%; bottom: 20px; left: 20px; }
+  .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+}

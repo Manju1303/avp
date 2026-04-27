@@ -9,7 +9,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll-triggered fade-in
+// Scroll-triggered animations
+const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+};
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -17,9 +22,39 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.12 });
+}, observerOptions);
 
 document.querySelectorAll(
     '.speciality-card, .dept-card, .facility-card, .affordable-card, ' +
-    '.emergency-card, .elderly-feature, .why-card, .info-item'
-).forEach(el => observer.observe(el));
+    '.emergency-card, .elderly-feature, .why-card, .info-item, .tech-item, .testimonial-card'
+).forEach((el, index) => {
+    el.style.transitionDelay = `${(index % 3) * 0.1}s`; // Stagger effect
+    observer.observe(el);
+});
+
+// Back to Top Logic
+const backToTop = document.createElement('button');
+backToTop.className = 'back-to-top';
+backToTop.innerHTML = '<i data-lucide="chevron-up"></i>';
+document.body.appendChild(backToTop);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// WhatsApp Button
+const waBtn = document.createElement('a');
+waBtn.className = 'whatsapp-float';
+waBtn.href = 'https://wa.me/919566566205';
+waBtn.target = '_blank';
+waBtn.innerHTML = '<i data-lucide="message-circle"></i><span>Chat with Us</span>';
+document.body.appendChild(waBtn);
+
