@@ -1,4 +1,4 @@
-// Arockia Medical Centre & Hospital
+// Arockia Medical Centre, Emergency & Trauma Care
 
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

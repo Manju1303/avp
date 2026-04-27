@@ -43,7 +43,7 @@ ul { list-style: none; }
 button { font-family: var(--font); cursor: pointer; border: none; background: none; }
 
 /* ── Container ── */
-.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
 
 /* ── Shared Section Layout ── */
 section { padding: 90px 0; }
@@ -221,7 +221,7 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 8px;
   margin-left: auto;
 }
 .nav-links a {
@@ -231,6 +231,7 @@ nav {
   padding: 7px 13px;
   border-radius: 6px;
   transition: var(--transition);
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--primary); background: var(--primary-light); }
 
@@ -355,11 +356,14 @@ nav {
 }
 
 .hero-content > p {
-  font-size: 17px;
-  color: rgba(255,255,255,0.82);
-  margin-bottom: 36px;
-  max-width: 500px;
-  line-height: 1.7;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+.hero-content > p:last-of-type {
+  margin-bottom: 32px;
 }
 
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -546,6 +550,9 @@ nav {
 .speciality-icon.medicine{ background: linear-gradient(135deg,#10b981,#065f46); }
 .speciality-icon.diabetes{ background: linear-gradient(135deg,#f97316,#c2410c); }
 .speciality-icon.og      { background: linear-gradient(135deg,#ec4899,#9d174d); }
+.speciality-icon.emergency{ background: linear-gradient(135deg,#ef4444,#b91c1c); }
+.speciality-icon.pediatrics{ background: linear-gradient(135deg,#f59e0b,#d97706); }
+.speciality-icon.skincare{ background: linear-gradient(135deg,#06b6d4,#0891b2); }
 
 .speciality-header h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
 .spec-tag {
