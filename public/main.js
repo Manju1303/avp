@@ -75,7 +75,9 @@ if (contactForm) {
             contactForm.reset();
             btn.innerHTML = originalText;
             btn.disabled = false;
-            lucide.createIcons(); // Re-render icons in button
+            lucide.createIcons({
+                root: btn
+            }); // Re-render icons only in the button
         }, 1500);
     });
 }

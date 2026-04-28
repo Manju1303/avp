@@ -1,5 +1,7 @@
 const CACHE_NAME = 'arockia-v4';
 const STATIC_ASSETS = [
+  './',
+  './index.html',
   './style.css',
   './main.js',
   './logo.jpeg',
