@@ -748,41 +748,48 @@
                     </div>
                     <div class="contact-form-wrap">
                         <h3>Book an Appointment</h3>
-                        <form class="contact-form">
+                        <form class="contact-form" action="https://formsubmit.co/arockiamedicalcentre@gmail.com" method="POST">
+                            <!-- Anti-spam honeypot -->
+                            <input type="text" name="_honey" style="display:none">
+                            <!-- Disable Captcha (optional) -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <!-- Success page redirect (optional, currently reloads page) -->
+                            <input type="hidden" name="_next" value="">
+                            
                             <div class="form-group">
                                 <label><i data-lucide="user"></i> Your Name</label>
-                                <input type="text" placeholder="Enter your full name">
+                                <input type="text" name="Name" placeholder="Enter your full name" required>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label><i data-lucide="phone"></i> Phone Number</label>
-                                    <input type="tel" placeholder="Your phone number">
+                                    <input type="tel" name="Phone" placeholder="Your phone number" required>
                                 </div>
                                 <div class="form-group">
                                     <label><i data-lucide="calendar"></i> Preferred Date</label>
-                                    <input type="date">
+                                    <input type="date" name="Date" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label><i data-lucide="building"></i> Department</label>
-                                <select>
+                                <select name="Department" required>
                                     <option value="">Select Department</option>
-                                    <option>Emergency &amp; Trauma</option>
-                                    <option>Orthopedic Care</option>
-                                    <option>General Medicine</option>
-                                    <option>Diabetes &amp; Wound Care</option>
-                                    <option>Obstetrics &amp; Gynecology</option>
-                                    <option>Pediatrics</option>
-                                    <option>General Surgery</option>
-                                    <option>Geriatric Care</option>
-                                    <option>Physiotherapy &amp; Rehabilitation</option>
-                                    <option>Diagnostics / Lab</option>
-                                    <option>Home &amp; Elderly Care</option>
+                                    <option value="Emergency & Trauma">Emergency &amp; Trauma</option>
+                                    <option value="Orthopedic Care">Orthopedic Care</option>
+                                    <option value="General Medicine">General Medicine</option>
+                                    <option value="Diabetes & Wound Care">Diabetes &amp; Wound Care</option>
+                                    <option value="Obstetrics & Gynecology">Obstetrics &amp; Gynecology</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                    <option value="General Surgery">General Surgery</option>
+                                    <option value="Geriatric Care">Geriatric Care</option>
+                                    <option value="Physiotherapy & Rehabilitation">Physiotherapy &amp; Rehabilitation</option>
+                                    <option value="Diagnostics / Lab">Diagnostics / Lab</option>
+                                    <option value="Home & Elderly Care">Home &amp; Elderly Care</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label><i data-lucide="message-square"></i> Message</label>
-                                <textarea rows="4" placeholder="How can we help you?"></textarea>
+                                <textarea name="Message" rows="4" placeholder="How can we help you?" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-full">
                                 <i data-lucide="calendar-check"></i>
