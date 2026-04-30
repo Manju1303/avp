@@ -50,13 +50,6 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// WhatsApp Button
-const waBtn = document.createElement('a');
-waBtn.className = 'whatsapp-float';
-waBtn.href = 'https://wa.me/919566566205';
-waBtn.target = '_blank';
-waBtn.innerHTML = '<i data-lucide="message-circle"></i><span>Chat with Us</span>';
-document.body.appendChild(waBtn);
 
 // Form Submission Handling
 const contactForm = document.querySelector('.contact-form');
@@ -69,16 +62,32 @@ if (contactForm) {
         btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
         btn.disabled = true;
         
-        // Simulate sending
-        setTimeout(() => {
-            alert('Thank you! Your appointment request has been sent successfully. We will contact you shortly.');
-            contactForm.reset();
+        // Send data using fetch to the form's action URL
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Thank you! Your appointment request has been sent successfully. We will contact you shortly.');
+                contactForm.reset();
+            } else {
+                alert('Oops! There was a problem submitting your form. Please try again.');
+            }
+        })
+        .catch(error => {
+            alert('Oops! There was a problem submitting your form. Please check your connection.');
+        })
+        .finally(() => {
             btn.innerHTML = originalText;
             btn.disabled = false;
-            lucide.createIcons({
-                root: btn
-            }); // Re-render icons only in the button
-        }, 1500);
+            if (window.lucide) {
+                lucide.createIcons({ root: btn });
+            }
+        });
     });
 }
 
