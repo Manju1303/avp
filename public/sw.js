@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arockia-v4';
+const CACHE_NAME = 'arockia-v5';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -8,37 +8,51 @@ const STATIC_ASSETS = [
   './manifest.json'
 ];
 
-// Install: cache only static assets (NOT index.html)
+// Install: cache static assets
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Activate immediately, don't wait
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
   );
 });
 
-// Activate: delete ALL old caches
+// Activate: cleanup old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim()) // Take control of all open tabs
+    ).then(() => self.clients.claim())
   );
 });
 
-// Fetch: HTML always from network, everything else from cache
+// Fetch: Smart Caching Strategy
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Always fetch HTML fresh from network
+  // 1. HTML: Network-First (Always try to get fresh content, fallback to cache)
   if (event.request.headers.get('accept')?.includes('text/html') || url.pathname.endsWith('.html') || url.pathname === '/') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('./index.html'))
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match('./index.html'))
     );
     return;
   }
 
-  // For other assets: cache-first
+  // 2. Images & Assets: Cache-First (Fastest, saves data)
   event.respondWith(
-    caches.match(event.request).then((response) => response || fetch(event.request))
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request).then(fetchRes => {
+        return caches.open(CACHE_NAME).then(cache => {
+          // Cache the new asset for future use
+          cache.put(event.request, fetchRes.clone());
+          return fetchRes;
+        });
+      });
+    })
   );
 });
