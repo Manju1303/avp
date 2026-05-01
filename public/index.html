@@ -15,6 +15,59 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#005EA6">
     <link rel="apple-touch-icon" href="logo.jpeg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arockiamedicalcentre.com/">
+    <meta property="og:title" content="Arockia Medical Centre | 24/7 Multi-Speciality Hospital in Erode">
+    <meta property="og:description" content="Trusted 24/7 Multi-Speciality, Emergency & Trauma Care in Kavindapadi, Erode. Specialized in Orthopedics, OG, and Diabetic Wound Care.">
+    <meta property="og:image" content="logo.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arockiamedicalcentre.com/">
+    <meta property="twitter:title" content="Arockia Medical Centre | 24/7 Multi-Speciality Hospital in Erode">
+    <meta property="twitter:description" content="Trusted 24/7 Multi-Speciality, Emergency & Trauma Care in Kavindapadi, Erode.">
+    <meta property="twitter:image" content="logo.jpeg">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hospital",
+      "name": "Arockia Medical Centre, Emergency & Trauma Care",
+      "image": "logo.jpeg",
+      "@id": "https://arockiamedicalcentre.com",
+      "url": "https://arockiamedicalcentre.com",
+      "telephone": "+919566566205",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "153, Near Nall Road, Bhavani Main Road, Kavindapadi",
+        "addressLocality": "Erode",
+        "postalCode": "638455",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 11.4172,
+        "longitude": 77.5683
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+    </script>
 </head>
 <body>
     <script>
@@ -755,10 +808,16 @@
                             <input type="hidden" name="_captcha" value="false">
                             <!-- Success page redirect (optional, currently reloads page) -->
                             <input type="hidden" name="_next" value="">
+                            <input type="hidden" name="_subject" value="New Appointment Request - Arockia Medical Centre">
+                            <input type="hidden" name="_template" value="table">
                             
                             <div class="form-group">
                                 <label><i data-lucide="user"></i> Your Name</label>
                                 <input type="text" name="Name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i data-lucide="mail"></i> Email Address</label>
+                                <input type="email" name="email" placeholder="Your email for confirmation" required>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">

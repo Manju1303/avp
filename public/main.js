@@ -59,13 +59,24 @@ if (contactForm) {
         const btn = contactForm.querySelector('button');
         const originalText = btn.innerHTML;
         
+        const formData = new FormData(contactForm);
+        
+        // Advanced Client-side Validation
+        const phone = formData.get('Phone');
+        const email = formData.get('email');
+        const phoneRegex = /^[0-9]{10,15}$/;
+        if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
+            alert('Please enter a valid 10-digit phone number.');
+            return;
+        }
+
         btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
         btn.disabled = true;
         
         // Send data using fetch to the form's action URL
         fetch(contactForm.action, {
             method: 'POST',
-            body: new FormData(contactForm),
+            body: formData,
             headers: {
                 'Accept': 'application/json'
             }
