@@ -70,14 +70,7 @@
       },"areaServed": ["Kavindapadi", "Bhavani", "Erode", "Gobichettipalayam", "Gobi", "Anthiyur", "Appakudal"]
     }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        });
-    </script>
+    
 </head>
 <body>
     <script>
@@ -994,9 +987,8 @@
     </a>
     </main>
 
-    <script src="main.js"></script>
-    
-        window.addEventListener('scroll', () => {
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js"></script><script>window.addEventListener('scroll', () => {
             document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
         });
         const slides = document.querySelectorAll('.slide');
@@ -1038,9 +1030,14 @@
                 document.body.style.overflow = '';
             });
         });
+        // Ensure icons are drawn after all logic
+        if (window.lucide) { lucide.createIcons(); }
     </script>
 </body>
 </html>
+
+
+
 
 
 
