@@ -304,9 +304,8 @@ nav {
 
 .slider-dots {
   position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 24px;
+  right: 24px;
   display: flex;
   gap: 8px;
   z-index: 10;
@@ -1189,7 +1188,8 @@ footer { background: #0a1929; color: rgba(255,255,255,0.75); }
   .hero { margin-top: var(--header-h); height: calc(100vh - var(--header-h)); min-height: 500px; text-align: center; display: flex; align-items: center; justify-content: center; }
   .hero-content { margin: 0 auto; }
   .hero-content h1 { font-size: clamp(34px, 10vw, 44px); }
-  .hero-content p { font-size: 16px; margin-bottom: 28px; margin-left: auto; margin-right: auto; }
+  .hero-content p { font-size: 14px; margin-bottom: 20px; margin-left: auto; margin-right: auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .hero-content p + p { display: none; }
   .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
   .btn { width: 100%; justify-content: center; padding: 16px; }
   .btn-emergency-hero { width: 100%; position: relative; z-index: 1; }
