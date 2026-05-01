@@ -70,6 +70,14 @@
       },"areaServed": ["Kavindapadi", "Bhavani", "Erode", "Gobichettipalayam", "Gobi", "Anthiyur", "Appakudal"]
     }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </head>
 <body>
     <script>
@@ -166,7 +174,7 @@
                         <img width="800" height="600" src="images/facility/arockia-laboratory-interior-new.jpg" alt="Modern Diagnostic Laboratory" loading="lazy">
                     </picture>
                     <div class="slide-overlay"></div>
-                    <div class="slide-caption"><i data-lucide="microscope"></i> In-house Pathology Laboratory</div>
+                    <div class="slide-caption"><i data-lucide="microscope"></i> Fully Automated Lab</div>
                 </div>
                 <div class="slide">
                     <picture>
@@ -482,13 +490,13 @@
                     <div class="facility-card">
                         <div class="facility-img">
                             <picture>
-                                <img width="800" height="600" src="images/facility/arockia-laboratory-interior-new.jpg" alt="In-house Laboratory - Arockia Medical Centre Kavindapadi">
+                                <img width="800" height="600" src="images/facility/arockia-laboratory-interior-new.jpg" alt="In-house Automated Lab - Arockia Medical Centre Kavindapadi">
                             </picture>
                             <div class="facility-img-overlay"><i data-lucide="microscope"></i></div>
                         </div>
                         <div class="facility-body">
-                            <h3>In-house Laboratory</h3>
-                            <p>State-of-the-art pathology lab with 24/7 diagnostic services for accurate and fast test results.</p>
+                            <h3>In-house Automated Lab</h3>
+                            <p>State-of-the-art Automated Lab with 24/7 diagnostic services for accurate and fast test results.</p>
                             <div class="facility-tag"><i data-lucide="clock"></i> 24/7 Available</div>
                         </div>
                     </div>
@@ -704,9 +712,9 @@
                     </div>
                     <div class="gallery-item">
                         <picture>
-                            <img width="800" height="600" src="images/facility/arockia-laboratory-interior-new.jpg" alt="Laboratory Interior" loading="lazy">
+                            <img width="800" height="600" src="images/facility/arockia-laboratory-interior-new.jpg" alt="Automated Lab Interior" loading="lazy">
                         </picture>
-                        <div class="gallery-overlay"><i data-lucide="microscope"></i><span>Laboratory Interior</span></div>
+                        <div class="gallery-overlay"><i data-lucide="microscope"></i><span>Automated Lab Interior</span></div>
                     </div>
                     <div class="gallery-item">
                         <picture>
@@ -887,7 +895,7 @@
                                     <option value="General Surgery">General Surgery</option>
                                     <option value="Geriatric Care">Geriatric Care</option>
                                     <option value="Physiotherapy & Rehabilitation">Physiotherapy &amp; Rehabilitation</option>
-                                    <option value="Diagnostics / Lab">Diagnostics / Lab</option>
+                                    <option value="Diagnostics / Automated Lab">Diagnostics / Automated Lab</option>
                                     <option value="Home & Elderly Care">Home &amp; Elderly Care</option>
                                 </select>
                             </div>
@@ -987,9 +995,7 @@
     </main>
 
     <script src="main.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
+    
         window.addEventListener('scroll', () => {
             document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
         });
@@ -1035,6 +1041,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 

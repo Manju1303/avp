@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arockia-v6';
+const CACHE_NAME = 'arockia-v7';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -59,3 +59,4 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
