@@ -42,6 +42,23 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }
 button { font-family: var(--font); cursor: pointer; border: none; background: none; }
 
+/* ── Skip Navigation (Accessibility) ── */
+.skip-nav {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 15px;
+  z-index: 9999;
+  transition: top 0.2s ease;
+}
+.skip-nav:focus { top: 0; }
+
+
 /* ── Container ── */
 .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
 

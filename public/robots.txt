@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arockiamedicalcentre.pages.dev/sitemap.xml

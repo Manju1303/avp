@@ -1,11 +1,14 @@
-const CACHE_NAME = 'arockia-v5';
+const CACHE_NAME = 'arockia-v6';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './style.css',
   './main.js',
   './logo.jpeg',
-  './manifest.json'
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png',
+  './sitemap.xml'
 ];
 
 // Install: cache static assets
