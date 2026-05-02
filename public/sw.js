@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arockia-v12';
+const CACHE_NAME = 'arockia-v13';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -9,7 +9,7 @@ const STATIC_ASSETS = [
   './icon-192.png',
   './icon-512.png',
   './sitemap.xml',
-  'https://unpkg.com/lucide@0.400.0/dist/umd/lucide.min.js?v=11'
+  'https://unpkg.com/lucide@0.400.0/dist/umd/lucide.min.js?v=13'
 ];
 
 // Install: cache static assets

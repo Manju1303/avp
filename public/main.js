@@ -50,6 +50,10 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Initialize icons for any dynamically added elements
+if (window.lucide) {
+    lucide.createIcons();
+}
 
 // Form Submission Handling
 const contactForm = document.querySelector('.contact-form');
