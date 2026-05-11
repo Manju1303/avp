@@ -50,9 +50,40 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Initialize icons for any dynamically added elements
+// Initialize icons
 if (window.lucide) {
     lucide.createIcons();
+}
+
+// Mobile Menu Logic
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+
+if (mobileMenuBtn && navLinks && navOverlay) {
+    const toggleMenu = () => {
+        navLinks.classList.toggle('open');
+        navOverlay.classList.toggle('open');
+        document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        
+        // Update icon
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+            const isOpened = navLinks.classList.contains('open');
+            icon.setAttribute('data-lucide', isOpened ? 'x' : 'menu');
+            if (window.lucide) lucide.createIcons({ root: mobileMenuBtn });
+        }
+    };
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking links
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('open')) toggleMenu();
+        });
+    });
 }
 
 // Form Submission Handling

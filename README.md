@@ -6,10 +6,9 @@ A premium, fast, and secure multi-speciality hospital website built for **Arocki
 This website serves as the digital front for Arockia Medical Centre, providing 24/7 emergency information, appointment booking, and details about specialized medical services including Orthopedics, General Medicine, Pediatrics, and Diabetic Care.
 
 ## 🚀 Key Features
-- **Modern Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile.
-- **PWA Ready**: Can be installed on mobile devices for offline access and app-like experience.
+- **Modern Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile with a flexible grid system.
 - **Floating Emergency Button**: Instant access to emergency services for mobile users.
-- **Optimized Performance**: High-speed loading using modern CSS and a specialized Service Worker caching strategy.
+- **Optimized Performance**: High-speed loading using modern CSS and optimized asset delivery.
 - **Secure**: Implements Content Security Policy (CSP) and secure headers for patient data protection.
 - **Cloudflare Optimized**: Includes native `_headers` and `_redirects` for Cloudflare Pages deployment.
 
@@ -26,9 +25,7 @@ This website serves as the digital front for Arockia Medical Centre, providing 2
 │   ├── images/            # Organized hospital and facility images
 │   ├── index.html         # Main website structure
 │   ├── style.css          # Premium design system & responsive styles
-│   ├── main.js            # Interactivity & form handling logic
-│   ├── sw.js              # Service Worker for PWA & Offline support
-│   ├── manifest.json      # PWA App configuration
+│   ├── main.js            # Interactivity & mobile menu logic
 │   ├── _headers           # Cloudflare Security & Caching headers
 │   └── _redirects         # Cloudflare SPA Routing rules
 ├── .gitignore             # Standard git ignore file
