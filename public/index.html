@@ -975,64 +975,8 @@
     </main>
 
     
-    <script src="main.js"></script><script>window.addEventListener('scroll', () => {
-            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
-        });
-        const slides = document.querySelectorAll('.slide');
-        const dotsContainer = document.getElementById('sliderDots');
-        let current = 0;
-        slides.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-            dot.addEventListener('click', () => goTo(i));
-            dotsContainer.appendChild(dot);
-        });
-        function goTo(n) {
-            slides[current].classList.remove('active');
-            dotsContainer.children[current].classList.remove('active');
-            current = n;
-            slides[current].classList.add('active');
-            dotsContainer.children[current].classList.add('active');
-        }
-        setInterval(() => goTo((current + 1) % slides.length), 4000);
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        const navOverlay = document.getElementById('navOverlay');
-
-        function toggleMenu() {
-            navLinks.classList.toggle('open');
-            navOverlay.classList.toggle('open');
-            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-        }
-
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', toggleMenu);
-        
-        // Auto-close on link click (already handled in main.js but adding here for consistency)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                navOverlay.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-        // Ensure icons are drawn after all logic
-        function initIcons() { if (window.lucide) { lucide.createIcons(); } else { setTimeout(initIcons, 100); } } initIcons();
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
