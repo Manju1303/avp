@@ -430,10 +430,9 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   margin-left: auto;
-  margin-right: 24px;
-  flex-shrink: 0;
+  margin-right: 20px;
 }
 
 .nav-links li {
@@ -441,14 +440,25 @@ nav {
 }
 
 .nav-links a {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--text-muted);
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   transition: var(--transition);
   white-space: nowrap;
   display: block;
+}
+
+@media (max-width: 1280px) {
+  .nav-links {
+    gap: 4px;
+    margin-right: 12px;
+  }
+  .nav-links a {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
 }
 
 .nav-links a:hover {
@@ -2062,7 +2072,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
   :root {
     --topbar-h: 0px;
   }
