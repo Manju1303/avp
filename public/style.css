@@ -569,6 +569,13 @@ nav {
   height: 14px !important;
 }
 
+/* Hide slide caption on mobile - prevents overlap with hero text */
+@media (max-width: 768px) {
+  .slide-caption {
+    display: none !important;
+  }
+}
+
 .hero-content-wrap {
   position: absolute;
   inset: 0;
@@ -2102,16 +2109,35 @@ footer {
   .hero {
     margin-top: var(--header-h);
     height: auto !important;
-    min-height: calc(100vh - var(--header-h)) !important;
+    min-height: calc(100svh - var(--header-h)) !important;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible !important;
+    padding-bottom: 0;
+  }
+
+  .hero-content-wrap {
+    position: relative !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible !important;
+    flex: 1;
+    padding: 40px 0 60px;
+    z-index: 5;
   }
 
   .hero-content {
     margin: 0 auto;
+    max-width: 100% !important;
+    padding: 0 16px;
+  }
+
+  /* Hide long second paragraph on mobile to reduce hero overflow */
+  .hero-content > p:nth-of-type(2) {
+    display: none !important;
   }
 
   .hero-content h1 {
@@ -2120,13 +2146,10 @@ footer {
 
   .hero-content p {
     font-size: 15px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     line-height: 1.6;
     display: block !important;
-    -webkit-line-clamp: unset !important;
-    -webkit-box-orient: unset !important;
     overflow: visible !important;
-    text-overflow: unset !important;
     max-width: 100% !important;
   }
 
@@ -2139,6 +2162,8 @@ footer {
     flex-direction: column;
     width: 100%;
     gap: 12px;
+    padding: 0 16px;
+    margin-bottom: 16px;
   }
 
   .btn {
@@ -2714,17 +2739,24 @@ footer {
 @media (max-width: 768px) {
   .mobile-emergency-fab {
     display: flex;
+    bottom: 16px;
+    right: 16px;
+    left: auto;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 
-  /* Adjust back-to-top position to avoid overlap */
-  .back-to-top {
-    bottom: 90px;
-    right: 20px;
-  }
-
+  /* WhatsApp stays bottom-left, above the fold */
   .whatsapp-float {
-    bottom: 20px;
-    left: 20px;
+    bottom: 16px;
+    left: 16px;
     padding: 12px;
+    border-radius: 50%;
+  }
+
+  /* Back-to-top sits above emergency FAB */
+  .back-to-top {
+    bottom: 76px;
+    right: 16px;
   }
 }
