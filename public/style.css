@@ -2073,7 +2073,12 @@ footer {
 }
 
 @media (max-width: 1150px) {
+  .container {
+    padding: 0 16px;
+  }
+
   :root {
+    --header-h-mobile: 64px;
     --topbar-h: 0px;
   }
 
@@ -2124,15 +2129,15 @@ footer {
 
   .mobile-menu-btn {
     display: flex;
-    margin-left: auto;
-    width: 48px !important;
-    height: 48px !important;
     align-items: center;
     justify-content: center;
-    background: var(--primary-light);
-    color: var(--primary);
-    border-radius: 12px;
-    touch-action: manipulation;
+    width: 44px !important;
+    height: 44px !important;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 12px;
+    flex-shrink: 0;
   }
 
   .nav-overlay {
@@ -2163,22 +2168,36 @@ footer {
   }
   
   .logo-name {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+  
+  .logo-sub {
+    font-size: 10px;
+  }
+
+  .nav-btn {
+    display: none;
   }
 
   .hero {
     margin-top: var(--header-h-mobile);
-    height: auto !important;
-    min-height: 500px !important;
-    padding: 60px 0;
-    text-align: center;
+    min-height: calc(100vh - var(--header-h-mobile));
+    padding: 40px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-content {
     margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-content h1 {
