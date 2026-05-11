@@ -10,11 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.3">
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#005EA6">
-    <link rel="apple-touch-icon" href="logo.jpeg">
+    <link rel="stylesheet" href="style.css?v=1.5">
+    <!-- Styles -->
     <!-- Canonical -->
     <link rel="canonical" href="https://arockiamedicalcentre.in/">
 
@@ -75,8 +72,11 @@
 </head>
 <body>
     <script>
+        // Unregister any old PWA Service Workers to ensure fresh content
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) { registration.unregister(); }
+            });
         }
     </script>
 
