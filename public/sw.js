@@ -1,4 +1,4 @@
-const CACHE_NAME = 'arockia-v14';
+const CACHE_NAME = 'arockia-v15';
 const STATIC_ASSETS = [
   './',
   './index.html',
