@@ -2439,6 +2439,9 @@ footer {
   }
 
   .footer-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
     justify-content: center;
   }
 
@@ -2913,4 +2916,37 @@ footer {
     left: 20px;
     padding: 12px;
   }
+}
+/* -
+   FOOTER BASE STYLES
+- */
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.footer-social a {
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+.footer-social i, .footer-social svg {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
 }
