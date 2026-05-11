@@ -6,9 +6,10 @@ A premium, fast, and secure multi-speciality hospital website built for **Arocki
 This website serves as the digital front for Arockia Medical Centre, providing 24/7 emergency information, appointment booking, and details about specialized medical services including Orthopedics, General Medicine, Pediatrics, and Diabetic Care.
 
 ## 🚀 Key Features
-- **Modern Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile with a flexible grid system.
+- **Modern Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile with a flexible fluid grid system.
+- **Premium UI/UX**: Implemented glassmorphism, fluid typography (`clamp`), and coordinated reveal animations.
 - **Floating Emergency Button**: Instant access to emergency services for mobile users.
-- **Optimized Performance**: High-speed loading using modern CSS and optimized asset delivery.
+- **Optimized Performance**: High-speed loading with optimized asset delivery and zero inline styles.
 - **Secure**: Implements Content Security Policy (CSP) and secure headers for patient data protection.
 - **Cloudflare Optimized**: Includes native `_headers` and `_redirects` for Cloudflare Pages deployment.
 
