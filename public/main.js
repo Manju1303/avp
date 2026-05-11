@@ -1,139 +1,217 @@
-// Arockia Medical Centre, Emergency & Trauma Care
+// Arockia Medical Centre, Emergency & Trauma Care - Main JS
+// Optimized for performance, accessibility, and smooth user experience
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-});
 
-// Scroll-triggered animations
-const observerOptions = {
-    threshold: 0.05,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll(
-    '.speciality-card, .dept-card, .facility-card, .affordable-card, ' +
-    '.emergency-card, .elderly-feature, .why-card, .info-item, .tech-item, .testimonial-card'
-).forEach((el, index) => {
-    el.style.transitionDelay = `${(index % 3) * 0.1}s`; // Stagger effect
-    observer.observe(el);
-});
-
-// Back to Top Logic
-const backToTop = document.createElement('button');
-backToTop.className = 'back-to-top';
-backToTop.innerHTML = '<i data-lucide="chevron-up"></i>';
-document.body.appendChild(backToTop);
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
-
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Initialize icons
-if (window.lucide) {
-    lucide.createIcons();
-}
-
-// Mobile Menu Logic
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-const navOverlay = document.getElementById('navOverlay');
-
-if (mobileMenuBtn && navLinks && navOverlay) {
-    const toggleMenu = () => {
-        navLinks.classList.toggle('open');
-        navOverlay.classList.toggle('open');
-        document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-        
-        // Update icon
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) {
-            const isOpened = navLinks.classList.contains('open');
-            icon.setAttribute('data-lucide', isOpened ? 'x' : 'menu');
-            if (window.lucide) lucide.createIcons({ root: mobileMenuBtn });
+    // 2. Header Scroll Effect
+    const header = document.getElementById('header');
+    const updateHeader = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
     };
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
 
-    mobileMenuBtn.addEventListener('click', toggleMenu);
-    navOverlay.addEventListener('click', toggleMenu);
+    // 3. Scroll-triggered animations (Reveal on Scroll)
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-    // Close menu when clicking links
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('open')) toggleMenu();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
         });
-    });
-}
+    }, observerOptions);
 
-// Form Submission Handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = contactForm.querySelector('button');
-        const originalText = btn.innerHTML;
-        
-        const formData = new FormData(contactForm);
-        
-        // Advanced Client-side Validation
-        const phone = formData.get('Phone');
-        const email = formData.get('email');
-        const phoneRegex = /^[0-9]{10,15}$/;
-        if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
-            alert('Please enter a valid 10-digit phone number.');
-            return;
+    const revealElements = document.querySelectorAll(
+        '.speciality-card, .dept-card, .facility-card, .affordable-card, ' +
+        '.emergency-card, .elderly-feature, .why-card, .info-item, .tech-item, .testimonial-card'
+    );
+    
+    revealElements.forEach((el, index) => {
+        // Stagger effect logic based on viewport width
+        const cols = window.innerWidth > 992 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+        el.style.transitionDelay = `${(index % cols) * 0.1}s`;
+        observer.observe(el);
+    });
+
+    // 4. Hero Slider Logic
+    const slides = document.querySelectorAll('.hero .slide');
+    const dotsContainer = document.getElementById('sliderDots');
+    let currentSlide = 0;
+    let slideInterval;
+
+    if (slides.length > 0) {
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        const goToSlide = (n) => {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            resetInterval();
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+
+        const resetInterval = () => {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        };
+
+        resetInterval();
+    }
+
+    // 5. Back to Top Logic
+    const backToTop = document.createElement('button');
+    backToTop.className = 'back-to-top';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    backToTop.innerHTML = '<i data-lucide="chevron-up"></i>';
+    document.body.appendChild(backToTop);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 800) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
         }
+    });
 
-        btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
-        btn.disabled = true;
-        
-        // Send data using fetch to the form's action URL
-        fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 6. Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    if (mobileMenuBtn && navLinks && navOverlay) {
+        const toggleMenu = () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navOverlay.classList.toggle('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+                if (window.lucide) lucide.createIcons({ root: mobileMenuBtn });
             }
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Thank you! Your appointment request has been sent successfully. We will contact you shortly.');
-                contactForm.reset();
-            } else {
-                alert('Oops! There was a problem submitting your form. Please try again.');
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) toggleMenu();
+            });
+        });
+    }
+
+    // 7. Form Submission Handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            const formData = new FormData(contactForm);
+            const phone = formData.get('Phone');
+            const phoneRegex = /^[0-9]{10,15}$/;
+            
+            if (phone && !phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
+                alert('Please enter a valid phone number.');
+                return;
             }
-        })
-        .catch(error => {
-            alert('Oops! There was a problem submitting your form. Please check your connection.');
-        })
-        .finally(() => {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            if (window.lucide) {
-                lucide.createIcons({ root: btn });
+
+            btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
+            btn.disabled = true;
+            if (window.lucide) lucide.createIcons({ root: btn });
+            
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Thank you! Your appointment request has been sent successfully.');
+                    contactForm.reset();
+                } else {
+                    alert('Oops! Submission failed. Please try again.');
+                }
+            })
+            .catch(() => alert('Submission error. Please check your connection.'))
+            .finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                if (window.lucide) lucide.createIcons({ root: btn });
+            });
+        });
+    }
+
+    // 8. ScrollSpy (Active Link Highlighting)
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
             }
         });
     });
-}
 
+    // Initialize icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+});
