@@ -29,9 +29,13 @@
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   --font: 'Inter', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
-  --topbar-h: 42px;
+  
+  /* - Spacing System - */
+  --section-p: clamp(60px, 8vw, 100px);
+  --container-w: 1400px;
   --header-h: 76px;
   --header-h-mobile: 68px;
+  --topbar-h: 42px;
 }
 
 /* - Reset - */
@@ -64,18 +68,14 @@ img {
 
 [data-lucide],
 svg.lucide {
-  display: inline-block !important;
-  vertical-align: middle !important;
-  stroke-width: 2.25px !important;
-  stroke: currentColor !important;
-  fill: none !important;
-  width: 1em !important;
-  height: 1em !important;
-  min-width: 14px !important;
-  min-height: 14px !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: inherit !important;
+  display: inline-block;
+  vertical-align: middle;
+  stroke-width: 2px;
+  stroke: currentColor;
+  fill: none;
+  width: 1.2em;
+  height: 1.2em;
+  transition: transform 0.2s ease;
 }
 
 a {
@@ -117,14 +117,14 @@ button {
 
 /* - Container - */
 .container {
-  max-width: 1400px !important;
+  max-width: var(--container-w);
   margin: 0 auto;
   padding: 0 24px;
 }
 
 /* - Shared Section Layout - */
 section {
-  padding: 90px 0;
+  padding: var(--section-p) 0;
 }
 
 .section-title {
@@ -638,6 +638,22 @@ nav {
   flex-wrap: wrap;
 }
 
+@media (max-width: 1024px) {
+  .hero-content {
+    max-width: 80% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    max-width: 100% !important;
+    text-align: center;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
 /* -
    STATS BAR
 - */
@@ -660,7 +676,7 @@ nav {
   align-items: center;
   gap: 14px;
   padding: 28px 20px;
-  flex: 1 1 160px;
+  flex: 1 1 200px;
   justify-content: center;
 }
 
@@ -1868,7 +1884,7 @@ footer {
 }
 
 .footer-top {
-  padding: 70px 0 50px;
+  padding: var(--section-p) 0 calc(var(--section-p) / 2);
 }
 
 .footer-grid {
@@ -2363,7 +2379,7 @@ footer {
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
 }
 
