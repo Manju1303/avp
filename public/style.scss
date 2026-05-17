@@ -1669,6 +1669,7 @@ nav {
 - */
 .about-section {
   background: var(--bg);
+  padding-top: 40px !important; /* Eliminate extra whitespace below the stats bar section */
 }
 
 .about-grid {
