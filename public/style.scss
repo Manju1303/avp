@@ -478,7 +478,7 @@ nav {
   border-radius: 2px;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1300px) {
   .nav-links {
     gap: 4px;
     margin-right: 12px;
@@ -616,12 +616,11 @@ nav {
 }
 
 .hero-content-wrap {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
+  position: relative;
+  width: 100%;
   z-index: 5;
-  padding-top: 40px;
+  padding: 40px 0;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -2204,7 +2203,7 @@ footer {
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1300px) {
   .container {
     padding: 0 16px;
   }
@@ -3018,4 +3017,20 @@ footer {
   justify-content: center !important;
   width: 18px !important;
   height: 18px !important;
+}
+
+
+@media (min-width: 1301px) and (max-width: 1440px) {
+  .nav-links {
+    gap: 4px !important;
+    margin-right: 12px !important;
+  }
+  .nav-links a {
+    padding: 4px 6px !important;
+    font-size: 12.5px !important;
+  }
+  .nav-btn {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
 }
