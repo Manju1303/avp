@@ -3,7 +3,7 @@
    Inspired by Apollo / Fortis / Manipal Hospital websites
 - */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* - CSS Variables - */
 /* Accessibility: Keyboard Focus */
@@ -17,6 +17,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* - Typography - */
   --font: 'Inter', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
+  
+  /* - Missing Brand Colors & Spacings (Fixed) - */
+  --bg-white: #FFFFFF;
+  --radius-sm: 8px;
+  --radius-xl: 32px;
+  --secondary: #0076cf;
+  
+  /* - Missing Brand Colors & Spacings (Fixed) - */
+  --bg-white: #FFFFFF;
+  --radius-sm: 8px;
+  --radius-xl: 32px;
+  --secondary: #0076cf;
   /* - Brand Colors - */
   --primary: #005EA6;
   --primary-dark: #003b68;
