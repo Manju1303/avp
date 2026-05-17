@@ -1,0 +1,16 @@
+{
+  "name": "avp",
+  "version": "1.0.0",
+  "description": "A premium, fast, and secure multi-speciality hospital website built for **Arockia Medical Centre** located in Kavindapadi, Erode.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manju1303/avp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
