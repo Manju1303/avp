@@ -13,6 +13,7 @@
   /* - Brand Colors - */
   --primary: #005EA6;
   --primary-dark: #003b68;
+  --primary-light: #e0f2fe;
   --primary-glow: rgba(0, 94, 166, 0.15);
   --accent: #10B981;
   --red: #EF4444;
@@ -2664,12 +2665,13 @@ footer {
 
 .quote-icon {
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: 24px;
-  color: var(--primary-light);
-  width: 48px !important;
-  height: 48px !important;
-  opacity: 0.5;
+  color: var(--primary);
+  width: 70px !important;
+  height: 70px !important;
+  opacity: 0.08;
+  z-index: 0;
 }
 
 .testimonial-content p {
