@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://arockiamedicalcentre.pages.dev/sitemap.xml
+Sitemap: https://arockiamedicalcentre.in/sitemap.xml
