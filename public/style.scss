@@ -2314,12 +2314,16 @@ footer {
   .hero {
     margin-top: var(--header-h-mobile);
     min-height: calc(100vh - var(--header-h-mobile));
-    padding: 40px 20px;
+    padding: 40px 20px 80px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+  }
+
+  .stats-bar {
+    margin-top: -20px;
   }
 
   .hero-content {
