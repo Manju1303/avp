@@ -3066,9 +3066,11 @@ footer {
   }
 }
 
+
+
 /* Laptop responsive height/width hero paragraph optimizations to prevent bottom clipping */
 @media (max-width: 1450px), (max-height: 850px) {
-  .hero-content p:nth-of-type(3) {
+  .hero-content p:nth-of-type(2) {
     display: none !important;
   }
   .hero-content-wrap {
