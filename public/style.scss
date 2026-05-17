@@ -491,6 +491,9 @@ nav {
 }
 
 @media (max-width: 1300px) {
+  .hero-content-wrap {
+    margin-top: 0 !important;
+  }
   .nav-links {
     gap: 4px;
     margin-right: 12px;
@@ -633,6 +636,7 @@ nav {
   z-index: 5;
   padding: 40px 0;
   box-sizing: border-box;
+  margin-top: -110px; /* Lift text upwards into the empty top space to prevent bottom overlapping */
 }
 
 .hero-content {
