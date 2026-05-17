@@ -382,6 +382,13 @@ section {
 /* -
    HEADER / NAV
 - */
+header .container {
+  width: 100% !important;
+  max-width: 1440px !important;
+  display: flex;
+  align-items: center;
+}
+
 header {
   position: fixed;
   top: var(--topbar-h);
