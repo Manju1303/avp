@@ -621,6 +621,7 @@ nav {
   display: flex;
   align-items: center;
   z-index: 5;
+  padding-top: 40px;
 }
 
 .hero-content {
@@ -2314,10 +2315,11 @@ footer {
   .hero {
     margin-top: var(--header-h-mobile);
     min-height: calc(100vh - var(--header-h-mobile));
-    padding: 40px 20px 80px 20px;
+    padding: 50px 20px 80px 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
   }
