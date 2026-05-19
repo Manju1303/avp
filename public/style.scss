@@ -2398,7 +2398,15 @@ footer {
 
   .hero-content p+p {
     display: none !important;
-    opacity: 0.85;
+  }
+
+  .hero-content p:last-of-type {
+    display: block !important;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 12px auto 24px auto !important;
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
   }
 
   .hero-actions {
