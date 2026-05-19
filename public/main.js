@@ -1,3 +1,26 @@
+// Toast notification helper (replaces alert() for better UX)
+function showToast(message, type = 'success') {
+    const existing = document.getElementById('amch-toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.id = 'amch-toast';
+    toast.style.cssText = `
+        position: fixed; top: 20px; right: 20px; z-index: 99999;
+        background: ${type === 'success' ? '#16a34a' : '#dc2626'};
+        color: #fff; padding: 14px 20px; border-radius: 10px;
+        font-family: Inter, sans-serif; font-size: 14px; font-weight: 500;
+        max-width: 320px; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        transform: translateX(120%); transition: transform 0.35s ease;
+        line-height: 1.5; cursor: pointer;
+    `;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.transform = 'translateX(0)'; });
+    const hide = () => { toast.style.transform = 'translateX(120%)'; setTimeout(() => toast.remove(), 350); };
+    setTimeout(hide, 4000);
+    toast.addEventListener('click', hide);
+}
+
 // Arockia Medical Centre, Emergency & Trauma Care - Main JS
 // Optimized for performance, accessibility, and smooth user experience
 
@@ -13,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const offsetPosition = elementPosition + window.window.scrollY - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -158,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const phoneRegex = /^[0-9]{10,15}$/;
             
             if (phone && !phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
-                alert('Please enter a valid phone number.');
-                return;
+                showToast('⚠️ Please enter a valid 10-digit phone number.', 'error'); return;
             }
 
             btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Sending...';
@@ -173,13 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => {
                 if (response.ok) {
-                    alert('Thank you! Your appointment request has been sent successfully.');
+                    showToast('✅ Thank you! Your appointment request has been sent successfully.', 'success');
                     contactForm.reset();
                 } else {
-                    alert('Oops! Submission failed. Please try again.');
+                    showToast('❌ Submission failed. Please try again or call us directly.', 'error');
                 }
             })
-            .catch(() => alert('Submission error. Please check your connection.'))
+            .catch(() => showToast('❌ Network error. Please check your connection.', 'error'))
             .finally(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -197,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
+            if (window.scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
         });

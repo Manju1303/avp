@@ -3083,15 +3083,7 @@ footer {
 
 
 
-/* Laptop responsive height/width hero paragraph optimizations to prevent bottom clipping */
-@media (max-width: 1450px), (max-height: 850px) {
-  .hero-content p:nth-of-type(2) {
-    display: none !important;
-  }
-  .hero-content-wrap {
-    margin-top: -40px !important;
-  }
-}
+
 
 
 /* Google Reviews Trust Badge Styles */
@@ -3185,5 +3177,13 @@ footer {
   .google-badge-rating {
     flex-direction: column;
     gap: 4px;
+  }
+}
+
+
+/* Laptop/tablet viewport - hide only the very long services paragraph */
+@media (max-width: 1300px) and (max-height: 800px) {
+  .hero-content p:nth-of-type(2) {
+    display: none;
   }
 }

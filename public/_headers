@@ -14,3 +14,7 @@
 /*.js
   Cache-Control: public, max-age=604800
 
+
+/*.map
+  X-Robots-Tag: noindex
+  Cache-Control: no-store

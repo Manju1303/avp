@@ -1,6 +1,17 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 
+function run(label, cmd) {
+  console.log(label + '...');
+  try {
+    execSync(cmd, { stdio: 'inherit' });
+  } catch (e) {
+    console.error('\n❌ BUILD FAILED at step: ' + label);
+    console.error(e.message);
+    process.exit(1);
+  }
+}
+
 console.log('Cleaning dist...');
 if (fs.existsSync('dist')) {
   fs.rmSync('dist', { recursive: true, force: true });
@@ -8,12 +19,14 @@ if (fs.existsSync('dist')) {
 fs.mkdirSync('dist/public', { recursive: true });
 
 console.log('Copying assets...');
-execSync('npx cpy "public/**/*" "dist/public" --parents', { stdio: 'inherit' });
+try {
+  fs.cpSync('public', 'dist/public', { recursive: true });
+} catch (e) {
+  console.error('\n❌ BUILD FAILED at step: Copying assets');
+  console.error(e.message);
+  process.exit(1);
+}
+run('Compiling SCSS', 'npx sass public/style.scss dist/public/style.css --style compressed --no-source-map');
+run('Minifying HTML', 'npx html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true public/index.html -o dist/public/index.html');
 
-console.log('Compiling SCSS...');
-execSync('npx sass public/style.scss dist/public/style.css --style compressed', { stdio: 'inherit' });
-
-console.log('Minifying HTML...');
-execSync('npx html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true public/index.html -o dist/public/index.html', { stdio: 'inherit' });
-
-console.log('Build completed successfully in dist/public/');
+console.log('\n✅ Build completed successfully in dist/public/');
