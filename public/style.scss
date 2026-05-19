@@ -654,9 +654,9 @@ nav {
   position: relative;
   width: 100%;
   z-index: 15; /* Above stats-bar z-index:10 so buttons are never hidden */
-  padding: 40px 0 140px 0; /* Bottom padding ensures buttons clear the stats-bar overlap zone */
+  padding: 30px 0 110px 0; /* Bottom padding ensures buttons clear the stats-bar overlap zone */
   box-sizing: border-box;
-  margin-top: -60px;
+  margin-top: 0;
 }
 
 .hero-content {
@@ -675,7 +675,7 @@ nav {
   border-radius: 50px;
   font-size: 13px;
   font-weight: 500;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .hero-badge svg, .hero-badge i {
@@ -685,11 +685,11 @@ nav {
 
 .hero-content h1 {
   font-family: var(--font-display);
-  font-size: clamp(40px, 4.5vw, 58px);
+  font-size: clamp(34px, 3.2vw, 44px);
   font-weight: 800;
   color: #fff;
-  line-height: 1.1;
-  margin-bottom: 12px;
+  line-height: 1.15;
+  margin-bottom: 10px;
   letter-spacing: -1px;
 }
 
@@ -710,15 +710,15 @@ nav {
 }
 
 .hero-content>p {
-  font-size: 16px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   max-width: 680px !important;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .hero-content>p:last-of-type {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .hero-actions {
@@ -3192,7 +3192,7 @@ footer {
 /* Optimize hero section for short viewports (laptops or small heights) to prevent bottom content overlapping */
 @media (max-height: 820px) {
   .hero-content h1 {
-    font-size: clamp(32px, 3.8vw, 48px) !important;
+    font-size: clamp(28px, 3vw, 38px) !important;
     line-height: 1.15 !important;
     margin-bottom: 8px !important;
   }
@@ -3203,7 +3203,8 @@ footer {
   
   .hero-content-wrap {
     padding-bottom: 70px !important;
-    padding-top: 15px !important;
+    padding-top: 10px !important;
+    margin-top: 0 !important; /* Ensure no negative margin pushes text behind header */
   }
   
   .hero-badge {
