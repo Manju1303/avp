@@ -237,3 +237,55 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 });
+
+// 9. PWA Service Worker Registration & Custom Install Prompt
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('PWA Service Worker registered with scope:', reg.scope))
+            .catch(err => console.error('PWA Service Worker registration failed:', err));
+    });
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    if (!document.getElementById('pwa-install-banner')) {
+        const banner = document.createElement('div');
+        banner.id = 'pwa-install-banner';
+        banner.style.cssText = `
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px;
+            padding: 14px 18px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            display: flex; align-items: center; gap: 14px; max-width: 380px;
+            font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+        `;
+        banner.innerHTML = `
+            <img src="icons/icon-192.png" alt="Arockia Hospital" style="width:42px; height:42px; border-radius:10px; flex-shrink:0; object-fit:cover;">
+            <div style="flex:1;">
+                <div style="font-weight:700; font-size:14px; color:#0f172a; line-height:1.2;">Install Arockia Hospital App</div>
+                <div style="font-size:12px; color:#64748b; margin-top:2px;">Quick 24/7 access & offline support</div>
+            </div>
+            <button id="pwa-install-btn" style="background:#0284c7; color:#fff; border:none; padding:8px 14px; border-radius:8px; font-weight:600; font-size:12px; cursor:pointer; white-space:nowrap;">Install</button>
+            <button id="pwa-close-btn" style="background:transparent; color:#94a3b8; border:none; font-size:20px; cursor:pointer; padding:0 4px; line-height:1;">&times;</button>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('pwa-install-btn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('PWA prompt outcome:', outcome);
+                deferredPrompt = null;
+            }
+            banner.remove();
+        });
+
+        document.getElementById('pwa-close-btn').addEventListener('click', () => {
+            banner.remove();
+        });
+    }
+});
+
